@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    environment:
+      name: deploy
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './www/dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
+      - run: echo "# Deployment succeeded" >> $GITHUB_STEP_SUMMARY
+      - run: echo "" >> $GITHUB_STEP_SUMMARY
+      - run: echo "Check it out [here]({{ jobs.deploy.environment.url }})" >> $GITHUB_STEP_SUMMARY
