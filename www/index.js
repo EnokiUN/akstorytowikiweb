@@ -43,7 +43,6 @@ button.addEventListener('click', async () => {
     output.value = 'Not Found';
   } else {
     content = await content.text();
-    console.log(content);
     output.value = wasm.convert(content);
   }
   button.disabled = false;
