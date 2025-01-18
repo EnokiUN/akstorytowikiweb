@@ -29,7 +29,8 @@ button.addEventListener('click', async () => {
           } else if (s.avgTag == 'After Operation') {
             stageName += 'after'
           }
-          stageMap[stageName] = s.storyInfo.substring(5);
+          console.log(s.storyTxt);
+          stageMap[stageName] = s.storyTxt;
         });
       });
     }
