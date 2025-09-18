@@ -1,7 +1,7 @@
 import * as wasm from "akstorytowiki";
 
-const RESOURCE_URL_ROOT = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData_YoStar/main/en_US/gamedata/story/';
-const STAGE_MAP_URL = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData_YoStar/main/en_US/gamedata/excel/story_review_table.json';
+const RESOURCE_URL_ROOT = 'https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/refs/heads/master/en/gamedata/story/';
+const STAGE_MAP_URL = 'https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/refs/heads/master/en/gamedata/excel/story_review_table.json';
 
 const urlInput = document.querySelector("#url-input");
 const stageInput = document.querySelector("#stage-input");
