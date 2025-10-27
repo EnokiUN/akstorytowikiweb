@@ -18,26 +18,23 @@ button.addEventListener('click', async () => {
       url = url.replace('github.com', 'raw.githubusercontent.com').replace('/blob', '');
     }
   } else if (stageInput.value) {
-    let [stage, part] = stageInput.value.split(' ');
     if (!stageMap.length) {
       let data = await fetch(STAGE_MAP_URL).then((r) => r.json());
       Object.values(data).forEach((d) => {
         d.infoUnlockDatas.forEach((s) => {
-          let stageName = s.storyCode;
+          let stageName = s.storyCode
+          if (stageName == null)
+            stageName = s.storyName.toUpperCase().replace(' ', '').replace('\'', '');
           if (s.avgTag == 'Before Operation') {
-            stageName += 'before'
+            stageName += 'BEFORE'
           } else if (s.avgTag == 'After Operation') {
-            stageName += 'after'
+            stageName += 'AFTER'
           }
-          console.log(s.storyTxt);
           stageMap[stageName] = s.storyTxt;
         });
       });
     }
-    if (!part) {
-      part = '';
-    }
-    url = RESOURCE_URL_ROOT + stageMap[stage.toUpperCase() + part.toLowerCase()] + '.txt';
+    url = RESOURCE_URL_ROOT + stageMap[stageInput.value.toUpperCase().replace(' ', '').replace('\'', '')] + '.txt';
   }
   let content = await fetch(url);
   if (content.status == 404) {
