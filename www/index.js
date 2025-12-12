@@ -23,7 +23,7 @@ button.addEventListener('click', async () => {
       Object.values(data).forEach((d) => {
         d.infoUnlockDatas.forEach((s) => {
           let stageName = s.storyCode
-          if (stageName == null)
+          if (!stageName)
             stageName = s.storyName.toUpperCase().replace(' ', '').replace('\'', '');
           if (s.avgTag == 'Before Operation') {
             stageName += 'BEFORE'
