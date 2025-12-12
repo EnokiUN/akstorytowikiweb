@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "esnext",
+      "deno.ns"
+    ]
+  },
+  "tasks": {
+    "wasmbuild": "deno run -A jsr:@deno/wasmbuild --inline"
+  }
+}
