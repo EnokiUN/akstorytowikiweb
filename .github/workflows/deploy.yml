@@ -36,7 +36,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-    - name: Write Summary
+      - name: Write Summary
         run: |
           echo "# Deployment succeeded" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
