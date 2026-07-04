@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: ${{ github.ref }}
+  group: "pages-${{ github.workflow }}-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -36,6 +36,8 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - run: echo "# Deployment succeeded" >> $GITHUB_STEP_SUMMARY
-      - run: echo "" >> $GITHUB_STEP_SUMMARY
-      - run: echo "Check it out [here]({{ jobs.deploy.environment.url }})" >> $GITHUB_STEP_SUMMARY
+    - name: Write Summary
+        run: |
+          echo "# Deployment succeeded" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check it out [here](${{ steps.deployment.outputs.page_url }})" >> $GITHUB_STEP_SUMMARY
