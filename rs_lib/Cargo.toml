@@ -1,11 +1,11 @@
 [package]
 name = "akstorytowiki-wasm-bindings"
 version = "0.0.0"
-edition = "2021"
+edition = "2024"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-akstorytowiki = { git = "https://github.com/enokiun/akstorytowiki", version = "0.1.0" }
+akstorytowiki = { version = "0.1.0", git = "https://github.com/enokiun/akstorytowiki" }
 wasm-bindgen = "=0.2.105"
